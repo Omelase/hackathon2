@@ -31,7 +31,7 @@ tasks.withType(JavaCompile) {
 
 eclipse {
     project {
-        name = "hackatone2"
+        name = "hackathon2.backend"
     }
     jdt {  
       sourceCompatibility = 17
@@ -46,7 +46,7 @@ tasks.named('test') {
 }
 
 // => 배포 파일(.jar, .zip 등)을 만들 때 사용할 이름 설정
-group = 'bitcamp' 
+group = 'hackathon2' 
 version = '0.0.1-SNAPSHOT'
 
 
@@ -88,6 +88,6 @@ dependencies {
 // 'application' 플러그인 설정:
 // => run 명령으로 실행시킬 자바 클래스 이름
 application {
-    mainClass = 'hackatone2.App'
+    mainClass = 'hackathon2.backend.App'
 }
 

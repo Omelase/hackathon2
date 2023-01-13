@@ -4,7 +4,7 @@
 package hackatone2;
 
 import org.junit.Test;
-import hackathone2.App;
+import hackathon2.backend.App;
 import static org.junit.Assert.*;
 
 public class AppTest {

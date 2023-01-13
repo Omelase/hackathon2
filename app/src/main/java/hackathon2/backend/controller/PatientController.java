@@ -1,26 +1,25 @@
-package hackathone2;
+package hackathon2.backend.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import hackathon2.backend.dao.PatientDao;
+import hackathon2.backend.vo.Patient;
 
 @RestController
-public class StaffController {
+public class PatientController {
 
-  @Autowired StaffDao staffDao;
-  // Autowired는 인스턴스 필드에만 사용가능
+  PatientDao patientDao = new PatientDao();
 
-  @PostMapping("/staffs")
-  public Object addStaff(Staff staff) {
+  @PostMapping("/patients")
+  public Object addPatient(Patient patient) {
 
-    this.staffDao.insert(staff);
+    this.patientDao.insert(patient);
 
     Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
@@ -28,76 +27,75 @@ public class StaffController {
     return contentMap;
   }
 
-  @GetMapping("/staffs")
-  public Object getStaffs() {
 
-    Staff[] staffs = this.staffDao.findAll();
+  @GetMapping("/patients")
+  public Object getPatients() {
+
+    Patient[] patients = this.patientDao.findAll();
 
     Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
-    contentMap.put("data", staffs);
+    contentMap.put("data", patients);
 
     return contentMap;
   }
 
-  @GetMapping("/staffs/{no}")
-  public Object getStaff(@PathVariable int no) {
 
-    Staff b = this.staffDao.findByNo(no);
+  @GetMapping("/patients/{no}")
+  public Object getPatient(@PathVariable int no) {
+
+    Patient p = this.patientDao.findByNo(no);
 
     Map<String,Object> contentMap = new HashMap<>();
 
-    if (b == null) {
+    if (p == null) {
       contentMap.put("status", "failure");
-      contentMap.put("data", "직원이 없습니다.");
+      contentMap.put("data", "강사가 없습니다.");
     } else {
       contentMap.put("status", "success");
-      contentMap.put("data", b);
+      contentMap.put("data", p);
     }
 
     return contentMap;
   }
 
-
-  @PutMapping("/staffs/{staffNo}")
-  public Object updateStaff(Staff staff) {
+  @PutMapping("/patients/{no}")
+  public Object updatePatient(Patient patient) {
 
     Map<String,Object> contentMap = new HashMap<>();
 
-    Staff old = this.staffDao.findByNo(staff.getStaffNo());
+    Patient old = this.patientDao.findByNo(patient.getNo());
     if (old == null) {
       contentMap.put("status", "failure");
       contentMap.put("data", "강사가 없습니다.");
       return contentMap;
     }
 
-    staff.setJoinDate(old.getJoinDate());
+    patient.setCreatedDate(old.getCreatedDate());
 
-    this.staffDao.update(staff);
+    this.patientDao.update(patient);
 
     contentMap.put("status", "success");
 
     return contentMap;
   }
 
-  @DeleteMapping("/staffs/{no}")
-  public Object deleteStaff(@PathVariable int no) {
+  @DeleteMapping("/patients/{no}")
+  public Object deletePatient(@PathVariable int no) {
 
-    Staff m = this.staffDao.findByNo(no);
+    Patient p = this.patientDao.findByNo(no);
 
     Map<String,Object> contentMap = new HashMap<>();
 
-    if (m == null) {
+    if (p == null) {
       contentMap.put("status", "failure");
-      contentMap.put("data", "직원이 없습니다.");
+      contentMap.put("data", "강사가 없습니다.");
 
     } else {
-      this.staffDao.delete(m);
+      this.patientDao.delete(p);
       contentMap.put("status", "success");
     }
 
     return contentMap;
   }
-
-
 }

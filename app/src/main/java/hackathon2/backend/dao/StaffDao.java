@@ -1,8 +1,9 @@
-package hackathone2;
+package hackathon2.backend.dao;
 
 import java.sql.Date;
 import java.util.Arrays;
 import org.springframework.stereotype.Repository;
+import hackathon2.backend.vo.Staff;
 
 @Repository
 public class StaffDao {

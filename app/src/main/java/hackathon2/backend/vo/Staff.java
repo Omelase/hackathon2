@@ -1,4 +1,4 @@
-package hackathone2;
+package hackathon2.backend.vo;
 
 public class Staff{
   public int getStaffNo() {
