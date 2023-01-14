@@ -5,16 +5,16 @@ public class Patient {
 
   private int no;
   private String name;
-  private int tel;
+  private String tel;
   private String symptome; // 증상
-  private char bloodType; // 혈액형
+  private int bloodType; // 혈액형
   private String basicAddress; // 주소
   private String detailAddress; // 상세주소
-  private String oversea; // 최근 14일간 해외 여행 여부
-  private byte bodyHeat; // 체온
+  private float bodyHeat; // 체온
   private int bloodPressure; // 혈압
   private int height; // 키
   private int weight; // 몸무게
+  private boolean oversea; // 최근 14일간 해외 여행 여부
   private String createdDate;
 
   public int getNo() {
@@ -29,10 +29,10 @@ public class Patient {
   public void setName(String name) {
     this.name = name;
   }
-  public int getTel() {
+  public String getTel() {
     return tel;
   }
-  public void setTel(int tel) {
+  public void setTel(String tel) {
     this.tel = tel;
   }
   public String getSymptome() {
@@ -41,10 +41,10 @@ public class Patient {
   public void setSymptome(String symptome) {
     this.symptome = symptome;
   }
-  public char getBloodType() {
+  public int getBloodType() {
     return bloodType;
   }
-  public void setBloodType(char bloodType) {
+  public void setBloodType(int bloodType) {
     this.bloodType = bloodType;
   }
   public String getBasicAddress() {
@@ -59,16 +59,16 @@ public class Patient {
   public void setDetailAddress(String detailAddress) {
     this.detailAddress = detailAddress;
   }
-  public String getOversea() {
+  public boolean getOversea() {
     return oversea;
   }
-  public void setOversea(String oversea) {
+  public void setOversea(boolean oversea) {
     this.oversea = oversea;
   }
-  public byte getBodyHeat() {
+  public float getBodyHeat() {
     return bodyHeat;
   }
-  public void setBodyHeat(byte bodyHeat) {
+  public void setBodyHeat(float bodyHeat) {
     this.bodyHeat = bodyHeat;
   }
   public int getBloodPressure() {
